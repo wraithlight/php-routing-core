@@ -24,11 +24,11 @@ namespace PhpAPI2 {
       $chopped = self::ChopQueryParams($requestUrl);
 
       $paths = PathCache::GetAllFilteredByRequestType($requestMethod);
-      if (is_array($paths) && count($paths) === 0)
+      if (\is_array($paths) && \count($paths) === 0)
         throw new \Error("The request method was not found!");
 
       $requestedPathRef = Url::GetRequestedPath($chopped[0], $paths);
-      if (is_null($requestedPathRef))
+      if ($requestedPathRef === NULL)
         throw new \Error("The requested path was not found!");
 
       $requestUriParams = Params::GetUriParams($chopped[0], $requestedPathRef->RelativeUri);
@@ -41,7 +41,7 @@ namespace PhpAPI2 {
     private static function ChopQueryParams($uri)
     {
       $chopped = explode("?", $uri);
-      count($chopped) === 1 && array_push($chopped, "");
+      \count($chopped) === 1 && array_push($chopped, "");
       return $chopped;
     }
   }

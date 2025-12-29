@@ -5,7 +5,7 @@ namespace PhpAPI2 {
     public static function GetFnParams($classInstance, $fnRef)
     {
       $reflectedFn = new \ReflectionMethod($classInstance, $fnRef);
-      $result = array();
+      $result = [];
       foreach ($reflectedFn->getParameters() as $param) {
         array_push($result, $param->name);
       }

@@ -23,7 +23,7 @@ namespace PhpAPI2 {
       $bodyParams,
       $queryParams
     ) {
-      $result = array();
+      $result = [];
       $fnParams = Reflection::GetFnParams($controller, $methodRef);
       $allParams = array_merge($uriParams, $bodyParams, $queryParams);
 

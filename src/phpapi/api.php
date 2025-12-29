@@ -13,11 +13,11 @@ namespace PhpAPI2 {
 
   class PhpAPI2Wrapper
   {
-    const GET_HTTP_KEY = "GET";
-    const POST_HTTP_KEY = "POST";
-    const PUT_HTTP_KEY = "PUT";
-    const PATCH_HTTP_KEY = "PATCH";
-    const DELETE_HTTP_KEY = "DELETE";
+    private const GET_HTTP_KEY = "GET";
+    private const POST_HTTP_KEY = "POST";
+    private const PUT_HTTP_KEY = "PUT";
+    private const PATCH_HTTP_KEY = "PATCH";
+    private const DELETE_HTTP_KEY = "DELETE";
 
     public static function RegisterPath(
       $requestType,
@@ -33,7 +33,7 @@ namespace PhpAPI2 {
       $controllerFactory,
       $method
     ) {
-      self::RegisterPathInternal(GET_HTTP_KEY, $relativeUri, $controllerFactory, $method);
+      self::RegisterPathInternal(self::GET_HTTP_KEY, $relativeUri, $controllerFactory, $method);
     }
 
     public static function RegisterPOSTPath(
@@ -41,7 +41,7 @@ namespace PhpAPI2 {
       $controllerFactory,
       $method
     ) {
-      self::RegisterPathInternal(POST_HTTP_KEY, $relativeUri, $controllerFactory, $method);
+      self::RegisterPathInternal(self::POST_HTTP_KEY, $relativeUri, $controllerFactory, $method);
     }
 
     public static function RegisterPUTPath(
@@ -49,7 +49,7 @@ namespace PhpAPI2 {
       $controllerFactory,
       $method
     ) {
-      self::RegisterPathInternal(PUT_HTTP_KEY, $relativeUri, $controllerFactory, $method);
+      self::RegisterPathInternal(self::PUT_HTTP_KEY, $relativeUri, $controllerFactory, $method);
     }
 
     public static function RegisterPATCHpath(
@@ -57,7 +57,7 @@ namespace PhpAPI2 {
       $controllerFactory,
       $method
     ) {
-      self::RegisterPathInternal(PATCH_HTTP_KEY, $relativeUri, $controllerFactory, $method);
+      self::RegisterPathInternal(self::PATCH_HTTP_KEY, $relativeUri, $controllerFactory, $method);
     }
 
     public static function RegisterDELETEPath(
@@ -65,7 +65,7 @@ namespace PhpAPI2 {
       $controllerFactory,
       $method
     ) {
-      self::RegisterPathInternal(DELETE_HTTP_KEY, $relativeUri, $controllerFactory, $method);
+      self::RegisterPathInternal(self::DELETE_HTTP_KEY, $relativeUri, $controllerFactory, $method);
     }
 
     public static function Listen(

@@ -15,12 +15,12 @@ namespace PhpAPI2 {
   {
     public static function GetUriParams($requestUri, $match)
     {
-      $result = array();
+      $result = [];
 
       $uriTree = Segments::ToNodes($requestUri);
       $matchTree = Segments::ToNodes($match);
 
-      for ($i = 0; $i < count($matchTree); $i++) {
+      for ($i = 0; $i < \count($matchTree); $i++) {
         Segments::IsParameter($matchTree[$i]) &&
           array_push(
             $result,
@@ -35,11 +35,11 @@ namespace PhpAPI2 {
     }
     public static function GetBodyParams($request)
     {
-      return array();
+      return [];
     }
     public static function GetQueryParams($queryString)
     {
-      $result = array();
+      $result = [];
       $queries = explode("&", $queryString);
       foreach ($queries as $query) {
         $queryKvp = explode("=", $query);
