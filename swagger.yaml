@@ -1,0 +1,183 @@
+openapi: 3.0.3
+info:
+  title: ND PHPApi Swadoc
+  version: 1.0.0
+  description: Demo swagger file for ND PHP API.
+servers:
+  - url: http://localhost:8000
+    description: Local environment
+
+tags:
+  - name: test
+    description: Endpoints added to TestController
+
+paths:
+  /test/get: 
+    get:
+      summary: Example GET endpoint.
+      operationId: testGetFn
+      tags:
+        - test
+      responses:
+        '200':
+          description: Successful GET request.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: testGetFn
+
+
+  /test/get-with-param/{paramArg}:
+    get:
+      summary: Example GET endpoint with param in the path.
+      operationId: testGetFnWithArg
+      tags:
+        - test
+      parameters:
+        - name: paramArg
+          in: path
+          required: true
+          description: Parameter passed in the URL path.
+          schema:
+            type: string
+          example: hello123
+      responses:
+        '200':
+          description: Successful GET request.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: testGetFnWithArg() > paramArg = hello123
+
+
+  /test/delete:
+    delete:
+      summary: Example DELETE endpoint.
+      operationId: testDeleteFn
+      tags:
+        - test
+      responses:
+        '200':
+          description: Successful DELETE request.
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /test/delete-with-param/{id}:
+    delete:
+      summary: Example DELETE endpoint with param in the path.
+      operationId: testDeleteFnWithArg
+      tags:
+        - test
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Parameter passed in the URL path.
+          schema:
+            type: string
+          example: hello123
+      responses:
+        '200':
+          description: Successful DELETE request.
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /test/put-with-param/{id}:
+    put:
+      summary: Example PUT endpoint with param in the path.
+      operationId: testPutFnWithBodyArg
+      tags:
+        - test
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Parameter passed in the URL path.
+          schema:
+            type: string
+          example: hello123
+      responses:
+        '200':
+          description: Successful PUT request.
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /test/patch-with-body:
+    patch:
+      summary: Example PATCH endpoint.
+      operationId: testPatchFn
+      tags:
+        - test
+      responses:
+        '200':
+          description: Successful PATCH request.
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /test/post-with-body:
+    post:
+      summary: Example POST endpoint.
+      operationId: testPostFnWithParamArg
+      tags:
+        - test
+      responses:
+        '200':
+          description: Successful POST request.
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /test/post-with-param/{id}:
+    post:
+      summary: Example POST endpoint with param in the path.
+      operationId: testPostFnWithBodyArg
+      tags:
+        - test
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Parameter passed in the URL path.
+          schema:
+            type: string
+          example: hello123
+      responses:
+        '200':
+          description: Successful POST request.
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /test/post-with-both/{id}:
+    post:
+      summary: Example POST endpoint with param in the path.
+      operationId: testPostFnWithBothArgs
+      tags:
+        - test
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Parameter passed in the URL path.
+          schema:
+            type: string
+          example: hello123
+      responses:
+        '200':
+          description: Successful POST request.
+          content:
+            text/plain:
+              schema:
+                type: string
