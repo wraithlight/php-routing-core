@@ -24,7 +24,11 @@ require_once("./app/test-controller.php");
 use PhpApi2\PhpAPI2Wrapper as Wrapper;
 
 $testControllerFactory = function() {
-    return new TestController();
+  return new TestController();
+};
+
+$swadocControllerFactory = function() {
+  return new SwadocController();
 };
 
 Wrapper::RegisterPath("GET", "/test/get", $testControllerFactory, "testGetFn");
@@ -40,6 +44,10 @@ Wrapper::RegisterPath("POST", "/test/post-with-param/:id", $testControllerFactor
 Wrapper::RegisterPath("POST", "/test/post-with-both/:id", $testControllerFactory, "testPostFnWithBothArgs");
 
 Wrapper::RegisterPath("PATCH", "/test/patch-with-body", $testControllerFactory, "testPatchFn");
+
+$isSwadocEnabled = getenv("SWAGGER_ENABLED");
+$swadocPath = getenv("SWAGGER_PATH");
+strtolower($isSwadocEnabled) === "true" && Wrapper::RegisterPath("GET", $swadocPath, $swadocControllerFactory, "getSwadoc");
 
 Wrapper::Listen();
 

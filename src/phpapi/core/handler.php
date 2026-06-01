@@ -30,19 +30,29 @@ namespace PhpAPI2 {
       foreach ($fnParams as $fnParam) {
         $isAdded = false;
         foreach ($allParams as $allParam) {
-          if ($allParam->Name === $fnParam) {
-            array_push($result, $allParam->Value);
+          $paramName = property_exists($allParam, 'Name')
+            ? self::kebabToCamel($allParam->Name)
+            : $allParam->Name ?? null;
+
+          if ($paramName === $fnParam) {
+            array_push($result, $allParam->Value ?? null);
             $isAdded = true;
             break;
           }
         }
         if (!$isAdded) {
-          array_push($result, NULL);
+          array_push($result, null);
         }
       }
 
       return $result;
     }
+
+    private static function kebabToCamel(string $str): string
+    {
+      return lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $str))));
+    }
+
   }
 }
 ?>

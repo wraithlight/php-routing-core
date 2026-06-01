@@ -2,6 +2,13 @@ version: "3.7"
 services:
   web:
     build: .
+    env_file:
+      - .env
+    environment:
+      SWAGGER_ENABLED: ${SWAGGER_ENABLED:-true}
+      SWAGGER_PATH: ${SWAGGER_PATH:-/api/v1/swadoc}
+      SERVER_CORS_ENABLED: ${SERVER_CORS_ENABLED:-true}
+      SERVER_CORS_ALLOWED_ORIGINS: ${SERVER_CORS_ALLOWED_ORIGINS:-*}
     ports: 
       - '8000:80'
     volumes:
