@@ -2,7 +2,7 @@
 namespace PhpAPI2 {
   class CachedPath
   {
-    public function __construct(
+    function __construct(
       $requestType,
       $relativeUri,
       $controllerFactory,
@@ -17,7 +17,7 @@ namespace PhpAPI2 {
 
   class PathCache
   {
-    private static $_cache = [];
+    private static $_cache = array();
 
     public static function Register($requestType, $relativeUri, $controllerFactory, $method)
     {
